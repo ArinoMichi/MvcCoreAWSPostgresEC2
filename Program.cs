@@ -8,9 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<RepositoryDepartamentos>();
 
-string connectionString = builder.Configuration.GetConnectionString("Postgres");
+//string connectionString = builder.Configuration.GetConnectionString("MariaDB");
 
-builder.Services.AddDbContext<DepartamentosContext>(options => options.UseNpgsql(connectionString));
+//builder.Services.AddDbContext<DepartamentosContext>(options => options.UseNpgsql(connectionString));
+string connectionString = builder.Configuration.GetConnectionString("MariaDB");
+
+builder.Services.AddDbContext<DepartamentosContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
 
 
 var app = builder.Build();
