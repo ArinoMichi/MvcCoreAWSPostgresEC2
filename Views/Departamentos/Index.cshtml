@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MvcCoreAWSPostgresEC2.Models.Departamento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-info">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>          
+                    @Html.ActionLink("Details", "Details", new {  idDept=item.IdDepartamento  }) 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
